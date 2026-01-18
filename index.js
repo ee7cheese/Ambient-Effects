@@ -5,7 +5,7 @@ jQuery(async () => {
     // --- 默认配置 ---
     let config = {
         enabled: false,
-        type: 'snow',   // snow, star, sakura, leaf
+        type: 'snow',   // snow, star, flower, leaf
         speed: 2,
         size: 3,
         count: 100,
@@ -68,8 +68,8 @@ jQuery(async () => {
                 case 'star': // 画星星 (十字光)
                     this.drawStar(ctx, this.size);
                     break;
-                case 'sakura': // 画樱花 (5瓣)
-                    this.drawSakura(ctx, this.size);
+                case 'flower': // 画花瓣 (5瓣)
+                    this.drawflower(ctx, this.size);
                     break;
                 case 'leaf': // 画叶子 (椭圆)
                     this.drawLeaf(ctx, this.size);
@@ -107,7 +107,7 @@ jQuery(async () => {
             c.stroke();
         }
         
-        drawSakura(c, r) {
+        drawflower(c, r) {
             // 简单的花瓣形状
             c.beginPath();
             c.moveTo(0, 0);
@@ -175,7 +175,7 @@ jQuery(async () => {
         const html = `
             <div id="${MENU_ID}" class="inline-drawer">
                 <div class="inline-drawer-toggle inline-drawer-header">
-                    <b>✨ 氛围特效 (Ambient)</b>
+                    <b>✨ 氛围特效</b>
                     <div class="inline-drawer-icon fa-solid fa-angle-down"></div>
                 </div>
                 <div class="inline-drawer-content ambient-settings-box">
@@ -192,7 +192,7 @@ jQuery(async () => {
                             <option value="snow">❄️ 柔光雪花</option>
                             <option value="star">✨ 闪烁星光</option>
                             <option value="leaf">🍃 飘落树叶</option>
-                            <option value="sakura">🌸 唯美樱花</option>
+                            <option value="flower">💐 飞舞花瓣</option>
                         </select>
                     </div>
 
@@ -237,7 +237,7 @@ jQuery(async () => {
             config.type = $(this).val();
             // 切换类型时自动推荐颜色
             if(config.type === 'leaf') config.color = '#88cc88';
-            else if(config.type === 'sakura') config.color = '#ffb7b2';
+            else if(config.type === 'flower') config.color = '#ffb7b2';
             else if(config.type === 'snow') config.color = '#ffffff';
             else if(config.type === 'star') config.color = '#fff6cc';
             $('#ambient_color').val(config.color);
